@@ -1,0 +1,37 @@
+{
+  "source": [
+    0,
+    0
+  ],
+  "target": [
+    10,
+    5
+  ],
+  "observation_posts": [
+    {
+      "center": [
+        4,
+        0
+      ],
+      "radius": 3
+    },
+    {
+      "center": [
+        7,
+        6
+      ],
+      "radius": 2
+    },
+    {
+      "center": [
+        10,
+        0
+      ],
+      "radius": 2
+    }
+  ],
+  "asteroids_zones": [
+  ],
+  "radars": [
+  ]
+}
