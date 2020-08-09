@@ -1,0 +1,8 @@
+name: psagot-algo-2020
+dependencies:
+  - python=3.8
+  - shapely
+  - plotly
+  - dash
+  - pandas
+  - networkx
