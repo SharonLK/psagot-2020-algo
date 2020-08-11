@@ -24,7 +24,7 @@ def _hex_to_rgb(hex_color: str) -> Tuple[int, int, int]:
     return int(hex_color[0:2], 16), int(hex_color[2:4], 16), int(hex_color[4:6], 16)
 
 
-def _generate_coordinate_scatter(coordinate: Coordinate, color: str = '#ff5500') -> go.Scatter:
+def _generate_coordinate_scatter(coordinate: Coordinate, color: str = '#ff5500', text=None) -> go.Scatter:
     """Converts the give coordinate into a displayable plotly scatter
 
     :param coordinate: coordinate to display
@@ -32,6 +32,7 @@ def _generate_coordinate_scatter(coordinate: Coordinate, color: str = '#ff5500')
     :return: plotly scatter graphics object containing the circle
     """
     return go.Scatter(x=[coordinate.x], y=[coordinate.y], mode='markers',
+                      hoverinfo='skip' if text is None else 'text', text=text,
                       marker=go.scatter.Marker(color=color, size=13))
 
 
@@ -179,8 +180,10 @@ def scenario_dropdown_value_changed(scenario_path: str, path: List[Tuple[float, 
                                                     hover_text=f'Radar {i + 1}')
                            for i, radar in enumerate(radars)] +
                           [_generate_path_scatter(path, color='#cccccc')] +
-                          [_generate_coordinate_scatter(source, color='#bfff80'),
-                           _generate_coordinate_scatter(target, color='#ff704d')],
+                          [_generate_coordinate_scatter(source, color='#bfff80',
+                                                        text=f'Source ({source.x}, {source.y})'),
+                           _generate_coordinate_scatter(target, color='#ff704d',
+                                                        text=f'Target ({target.x}, {target.y})')],
                      layout=go.Layout(dragmode='pan',
                                       yaxis={'scaleanchor': 'x'},
                                       showlegend=False,
