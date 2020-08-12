@@ -4,30 +4,30 @@
     5
   ],
   "target": [
-    14.5,
-    7.5
+    25,
+    15
   ],
   "observation_posts": [
     {
       "center": [
         4,
-        8
+        10
       ],
-      "radius": 1
+      "radius": 2
     },
     {
       "center": [
         5,
         5
       ],
-      "radius": 1
+      "radius": 2
     },
     {
       "center": [
-        5.5,
-        3.5
+        8,
+        3
       ],
-      "radius": 1
+      "radius": 2
     }
   ],
   "asteroids_zones": [
@@ -54,20 +54,20 @@
     {
       "boundary": [
         [
-          7,
-          8
-        ],
-        [
-          6.5,
-          9
-        ],
-        [
-          11,
+          4,
           11
         ],
         [
-          11.5,
+          5,
           10
+        ],
+        [
+          9,
+          20
+        ],
+        [
+          8,
+          21
         ]
       ]
     },
@@ -95,10 +95,10 @@
   "radars": [
     {
       "center": [
-        13,
-        5
+        20,
+        10
       ],
-      "radius": 4
+      "radius": 10
     }
   ]
 }
