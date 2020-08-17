@@ -192,11 +192,15 @@ def scenario_dropdown_value_changed(scenario_path: str, path: List[Tuple[float, 
 
 
 @app.callback(dash.dependencies.Output('store-path', 'data'),
-              [dash.dependencies.Input('run-button', 'n_clicks')],
-              [dash.dependencies.State('scenario-radio-items', 'value')])
+              [dash.dependencies.Input('run-button', 'n_clicks'),
+               dash.dependencies.Input('scenario-radio-items', 'value')])
 def run_button_n_clicks_changed(n_clicks: int, scenario_path: str) -> List[Tuple[float, float]]:
     # Don't run the algorithm when the application boots up
-    if n_clicks is None:
+    if n_clicks is None or len(dash.callback_context.triggered) == 0:
+        return []
+
+    # If this has been triggered because the chosen scenario was changed, reset the path to be blank
+    if len([t for t in dash.callback_context.triggered if t['prop_id'] == 'scenario-radio-items.value']) > 0:
         return []
 
     with open(scenario_path, 'r') as f:
@@ -214,7 +218,7 @@ def run_button_n_clicks_changed(n_clicks: int, scenario_path: str) -> List[Tuple
               for raw_radar in raw_scenario['radars']]
 
     # Dash doesn't support custom return types from callbacks, so we convert the path into a list of tuples
-    return [(c.x, c.y) for c in navigate(source, target, posts, asteroids, radars)]
+    return [(c.x, c.y) for c in navigate(source, target, posts + asteroids + radars)]
 
 
 if __name__ == '__main__':

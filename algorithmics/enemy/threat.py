@@ -6,6 +6,6 @@ from dataclasses import dataclass
 class Threat(ABC):
     """Generic threat class
 
-    Common abstract or helper functions can be implemented here.
+    Common abstract or concrete helper functions can be implemented here.
     """
     pass
