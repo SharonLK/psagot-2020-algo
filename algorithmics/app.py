@@ -3,7 +3,7 @@ import json
 import math
 import pathlib
 import re
-from typing import List, Tuple
+from typing import Dict, List, Tuple
 
 import dash
 import dash_core_components as dcc
@@ -15,6 +15,20 @@ from algorithmics.enemy.observation_post import ObservationPost
 from algorithmics.enemy.radar import Radar
 from algorithmics.navigator import navigate
 from algorithmics.utils.coordinate import Coordinate
+
+
+def _parse_scenario_json(contents: Dict) -> Tuple[Coordinate, Coordinate,
+                                                  List[ObservationPost], List[AsteroidsZone], List[Radar]]:
+    source = Coordinate(contents['source'][0], contents['source'][1])
+    target = Coordinate(contents['target'][0], contents['target'][1])
+    posts = [ObservationPost(Coordinate(raw_post['center'][0], raw_post['center'][1]), raw_post['radius'])
+             for raw_post in contents['observation_posts']]
+    asteroids = [AsteroidsZone([Coordinate(c[0], c[1]) for c in raw_zone['boundary']])
+                 for raw_zone in contents['asteroids_zones']]
+    radars = [Radar(Coordinate(raw_radar['center'][0], raw_radar['center'][1]), raw_radar['radius'])
+              for raw_radar in contents['radars']]
+
+    return source, target, posts, asteroids, radars
 
 
 def _hex_to_rgb(hex_color: str) -> Tuple[int, int, int]:
@@ -160,15 +174,7 @@ def scenario_dropdown_value_changed(scenario_path: str, path: List[Tuple[float, 
     with open(scenario_path, 'r') as f:
         raw_scenario = json.load(f)
 
-    # Parse scenario JSON
-    source = Coordinate(raw_scenario['source'][0], raw_scenario['source'][1])
-    target = Coordinate(raw_scenario['target'][0], raw_scenario['target'][1])
-    posts = [ObservationPost(Coordinate(raw_post['center'][0], raw_post['center'][1]), raw_post['radius'])
-             for raw_post in raw_scenario['observation_posts']]
-    asteroids = [AsteroidsZone([Coordinate(c[0], c[1]) for c in raw_zone['boundary']])
-                 for raw_zone in raw_scenario['asteroids_zones']]
-    radars = [Radar(Coordinate(raw_radar['center'][0], raw_radar['center'][1]), raw_radar['radius'])
-              for raw_radar in raw_scenario['radars']]
+    source, target, posts, asteroids, radars = _parse_scenario_json(raw_scenario)
 
     return go.Figure(data=[_generate_circle_scatter(post.center, post.radius, color='#ffa31a',
                                                     hover_text=f'Observation Post {i + 1}')
@@ -206,16 +212,7 @@ def run_button_n_clicks_changed(n_clicks: int, scenario_path: str) -> List[Tuple
     with open(scenario_path, 'r') as f:
         raw_scenario = json.load(f)
 
-    # TODO: remove the ugly code duplication
-    # Parse scenario JSON
-    source = Coordinate(raw_scenario['source'][0], raw_scenario['source'][1])
-    target = Coordinate(raw_scenario['target'][0], raw_scenario['target'][1])
-    posts = [ObservationPost(Coordinate(raw_post['center'][0], raw_post['center'][1]), raw_post['radius'])
-             for raw_post in raw_scenario['observation_posts']]
-    asteroids = [AsteroidsZone([Coordinate(c[0], c[1]) for c in raw_zone['boundary']])
-                 for raw_zone in raw_scenario['asteroids_zones']]
-    radars = [Radar(Coordinate(raw_radar['center'][0], raw_radar['center'][1]), raw_radar['radius'])
-              for raw_radar in raw_scenario['radars']]
+    source, target, posts, asteroids, radars = _parse_scenario_json(raw_scenario)
 
     # Dash doesn't support custom return types from callbacks, so we convert the path into a list of tuples
     return [(c.x, c.y) for c in navigate(source, target, posts + asteroids + radars)]
