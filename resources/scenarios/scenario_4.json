@@ -4,7 +4,7 @@
     0
   ],
   "target": [
-    20,
+    50,
     0
   ],
   "observation_posts": [
@@ -14,10 +14,10 @@
   "radars": [
     {
       "center": [
-        10,
+        30,
         0
       ],
-      "radius": 15
+      "radius": 35
     }
   ]
 }
