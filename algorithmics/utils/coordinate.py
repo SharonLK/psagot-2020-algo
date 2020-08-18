@@ -7,7 +7,8 @@ class Coordinate:
 
         Note that this class is immutable, any function executed on this class will result in a new Coordinate instance.
 
-        ================================
+        Examples:
+        =========
 
         >>> c1 = Coordinate(5, 5)
         >>> c2 = Coordinate(10, 10)
