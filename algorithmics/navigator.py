@@ -15,7 +15,7 @@ def navigate(source: Coordinate, target: Coordinate, threats: List[Threat]) -> L
     :param source: source coordinate of the spaceship
     :param target: target coordinate of the spaceship
     :param threats: list of threats in the scenario (might include any combination of observation posts, asteroids zones
-        or radars)
+        and radars)
     :return: list of calculated path way points
     """
 
