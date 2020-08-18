@@ -19,6 +19,11 @@ from algorithmics.utils.coordinate import Coordinate
 
 def _parse_scenario_json(contents: Dict) -> Tuple[Coordinate, Coordinate,
                                                   List[ObservationPost], List[AsteroidsZone], List[Radar]]:
+    """Parses the given JSON dictionary into scenario objects
+
+    :param contents: contents of the JSON file parsed as a python dictionary
+    :return: source coordinate, target coordinate, list of observation posts, list of asteroids zones & list of radars
+    """
     source = Coordinate(contents['source'][0], contents['source'][1])
     target = Coordinate(contents['target'][0], contents['target'][1])
     posts = [ObservationPost(Coordinate(raw_post['center'][0], raw_post['center'][1]), raw_post['radius'])
@@ -32,6 +37,11 @@ def _parse_scenario_json(contents: Dict) -> Tuple[Coordinate, Coordinate,
 
 
 def _hex_to_rgb(hex_color: str) -> Tuple[int, int, int]:
+    """Converts a color in hex-string representation to a tuple of (R,G,B) values in decimals
+
+    :param hex_color: color hex value as a string in the form of `#RRGGBB` or `#RGB`
+    :return: decimal representation of the color as a tuple
+    """
     hex_color = hex_color.lstrip("#")
     if len(hex_color) == 3:
         hex_color = hex_color * 2
@@ -123,10 +133,12 @@ def _extract_scenario_number_from_path(path: str) -> int:
     return int(re.match(r'.*scenario_(\d+)\.json', path).group(1))
 
 
+# Retrieve all available scenarios
 scenario_files = glob.glob('../resources/scenarios/scenario_*.json')
 
 app = dash.Dash(__name__, assets_folder=pathlib.Path('..') / 'resources' / 'css')
 
+# A bit of HTML to make the dashboard look clean and nice
 app.layout = html.Div([
     html.H1('The Most Best Application Ever', style={'text-align': 'center', 'font-family': 'Courier New',
                                                      'font-weight': 'bold', 'font-size': '30px'}),
@@ -160,6 +172,11 @@ app.layout = html.Div([
 @app.callback(dash.dependencies.Output('calculated-path', 'value'),
               [dash.dependencies.Input('store-path', 'data')])
 def update_path_text(path: List[Tuple[float, float]]) -> str:
+    """Updates the textbox displaying the string representation of the path whenever it changes
+
+    :param path: calculated path
+    :return: string representation of the calculated path
+    """
     coordinates = [f'({coordinate[0]}, {coordinate[1]})' for coordinate in path]
     return ', '.join(coordinates)
 
@@ -167,7 +184,13 @@ def update_path_text(path: List[Tuple[float, float]]) -> str:
 @app.callback(dash.dependencies.Output('graph', 'figure'),
               [dash.dependencies.Input('scenario-radio-items', 'value'),
                dash.dependencies.Input('store-path', 'data')])
-def scenario_dropdown_value_changed(scenario_path: str, path: List[Tuple[float, float]]) -> go.Figure:
+def update_graph(scenario_path: str, path: List[Tuple[float, float]]) -> go.Figure:
+    """Updates the drawn graph when the scenario or calculated path were changed
+
+    :param scenario_path: path to selected scenario JSON file
+    :param path: calculated path
+    :return: graph to be drawn in the browser
+    """
     # Convert path into a coordinate representation
     path = [Coordinate(c[0], c[1]) for c in path]
 
@@ -200,12 +223,18 @@ def scenario_dropdown_value_changed(scenario_path: str, path: List[Tuple[float, 
 @app.callback(dash.dependencies.Output('store-path', 'data'),
               [dash.dependencies.Input('run-button', 'n_clicks'),
                dash.dependencies.Input('scenario-radio-items', 'value')])
-def run_button_n_clicks_changed(n_clicks: int, scenario_path: str) -> List[Tuple[float, float]]:
+def update_path(n_clicks: int, scenario_path: str) -> List[Tuple[float, float]]:
+    """Updates the path to be drawn when the scenario changes, or when the user clicks on the calculate path button
+
+    :param n_clicks: counter of how many times the button has been clicked
+    :param scenario_path: path to selected scenario JSON file
+    :return: updated path
+    """
     # Don't run the algorithm when the application boots up
     if n_clicks is None or len(dash.callback_context.triggered) == 0:
         return []
 
-    # If this has been triggered because the chosen scenario was changed, reset the path to be blank
+    # If this callback has been triggered because the chosen scenario was changed, reset the path to be blank
     if len([t for t in dash.callback_context.triggered if t['prop_id'] == 'scenario-radio-items.value']) > 0:
         return []
 
