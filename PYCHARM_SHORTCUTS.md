@@ -14,3 +14,5 @@ To fully experience and be completely immersed in the spiciness and juiciness th
 | `CTRL Q`       | Show doc-string     | When cursor is above a function/method/class definition, this opens the doc-string in a nice looking window |
 | `CTRL P`       | Show parameters     | When cursor is inside function call, this shows all available parameters for this function                  |
 | `SHIFT F6`     | Rename (& refactor) | Rename a function/method/class/variable/file/etc... and apply the new name to all code occurrences          |
+| `CTRL W`       | Expand selection    | Expands current selection region to the next scope (play with it, its really nice and effective)            |
+| `CTRL SHIFT W` | Reduce selection    | Reduces current selection region to the previous scope (play with it too, its really spicy and juicy)       |
