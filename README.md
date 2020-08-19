@@ -1,6 +1,8 @@
 # HATAM 2020 Algorithmic Exercise
 
-https://docs.google.com/document/d/16ps7VZRZd3gsKrWACelI3DyU_dNB8ET3lGMScaewams/edit?usp=sharing
+Click [here](https://docs.google.com/document/d/16ps7VZRZd3gsKrWACelI3DyU_dNB8ET3lGMScaewams/edit?usp=sharing) for the problem (exercise) definition.
+
+Click [here](https://github.com/SharonLK/psagot-2020-algo/blob/master/PYCHARM_SHORTCUTS.md) for a list of PyCharm shortcuts and tips & tricks.
 
 ## Python (Anaconda) & PyCharm Installation
 
