@@ -4,7 +4,7 @@
 
 By now you should have set-up the algorithmic anaconda environment using the instructions in the following link:
 
-`https://github.com/SharonLK/psagot-2020-reqs`
+`https://github.com/SharonLK/psagot-2020-reqs#algorithmics-workshop-installations`
 
 If you haven't done already, now is the time.
 
