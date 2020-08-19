@@ -17,12 +17,22 @@ Follow these instructions to clone the repo and set-up PyCharm correctly:
 3. Open the cloned directory using PyCharm
 4. After the project has been opened in PyCharm, go to settings, `File -> Settings...` (or `CTRL ALT S`)
 5. In the opened window open the tab `Project -> Project Interpreter`
-![image](https://user-images.githubusercontent.com/38311688/89771781-8de4eb80-db09-11ea-8ae7-63bd25c5ec88.png)
+
+    ![image](https://user-images.githubusercontent.com/38311688/89771781-8de4eb80-db09-11ea-8ae7-63bd25c5ec88.png)
+
 6. In the new window, click on the cog icon and then on `Add...`
-![image](https://user-images.githubusercontent.com/38311688/89771886-c1c01100-db09-11ea-92c4-677d96030c97.png)
+
+    ![image](https://user-images.githubusercontent.com/38311688/89771886-c1c01100-db09-11ea-92c4-677d96030c97.png)
+
 7. In the add python interpreter window, click on the `Conda Environment` tab
-![image](https://user-images.githubusercontent.com/38311688/89771944-d9979500-db09-11ea-814e-79a7429c4a20.png)
-8. Select `Existing environment` and navigate to where the `python.exe` executable of the `psagot-2020-algo` environment is installed under the `interpreter` setting (usually its found at `C:\users\<username>\anaconda3\envs\psagot-2020-algo\python.exe`)
-![image](https://user-images.githubusercontent.com/38311688/89772048-08157000-db0a-11ea-89c6-321d7b543396.png)
+
+    ![image](https://user-images.githubusercontent.com/38311688/89771944-d9979500-db09-11ea-814e-79a7429c4a20.png)
+
+8. Select `Existing environment` and navigate to where the `python.exe` executable of the `psagot-2020-algo` environment is installed under the `interpreter` setting
+    * For windows its usually found at `C:\users\<username>\anaconda3\envs\psagot-2020-algo\python.exe`)
+    * For linux its usually found at `/home/<username>/anaconda3`
+
+    ![image](https://user-images.githubusercontent.com/38311688/89772048-08157000-db0a-11ea-89c6-321d7b543396.png)
+
 9. Click `OK`
 10. Done!
