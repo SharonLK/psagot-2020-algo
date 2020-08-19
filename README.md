@@ -1,5 +1,7 @@
 # HATAM 2020 Algorithmic Exercise
 
+https://docs.google.com/document/d/16ps7VZRZd3gsKrWACelI3DyU_dNB8ET3lGMScaewams/edit?usp=sharing
+
 ## Python (Anaconda) & PyCharm Installation
 
 By now you should have downloaded & set-up the algorithmic anaconda environment using the instructions in the following link:
