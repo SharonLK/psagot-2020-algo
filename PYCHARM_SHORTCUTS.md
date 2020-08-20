@@ -4,7 +4,7 @@ To fully experience and be completely immersed in the spiciness and juiciness th
 
 ## Shortcuts
 
-| Shortcut       | What it does        | Explanation                                                                                                 |
+| Shortcut &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       | What it does        | Explanation                                                                                                 |
 |----------------|---------------------|-------------------------------------------------------------------------------------------------------------|
 | `CTRL ALT L`   | Reformat code       | Nicely re-formats your code by correctly placing white spaces and line breaks                               |
 | `CTRL N`       | Search class        | Search for a classes in the whole project                                                                   |
