@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import List
 
-from algorithmics.enemy.threat import Threat
+from algorithmics.threats.threat import Threat
 from algorithmics.utils.coordinate import Coordinate
 
 

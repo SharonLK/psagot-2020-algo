@@ -1,9 +1,9 @@
 from typing import List
 
-from algorithmics.enemy.asteroids_zone import AsteroidsZone
-from algorithmics.enemy.observation_post import ObservationPost
-from algorithmics.enemy.radar import Radar
-from algorithmics.enemy.threat import Threat
+from algorithmics.threats.asteroids_zone import AsteroidsZone
+from algorithmics.threats.observation_post import ObservationPost
+from algorithmics.threats.radar import Radar
+from algorithmics.threats.threat import Threat
 from algorithmics.utils.coordinate import Coordinate
 
 

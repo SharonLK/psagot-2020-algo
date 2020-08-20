@@ -10,9 +10,9 @@ import dash_core_components as dcc
 import dash_html_components as html
 import plotly.graph_objects as go
 
-from algorithmics.enemy.asteroids_zone import AsteroidsZone
-from algorithmics.enemy.observation_post import ObservationPost
-from algorithmics.enemy.radar import Radar
+from algorithmics.threats.asteroids_zone import AsteroidsZone
+from algorithmics.threats.observation_post import ObservationPost
+from algorithmics.threats.radar import Radar
 from algorithmics.navigator import navigate
 from algorithmics.utils.coordinate import Coordinate
 
