@@ -4,7 +4,7 @@ from dataclasses import dataclass
 
 @dataclass
 class Threat(ABC):
-    """Generic kidnappers threat class
+    """Generic threat class
 
     All threat classes inherit from this base class and define objects in space that our spaceship must not be detected
     by.
