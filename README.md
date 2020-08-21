@@ -4,6 +4,8 @@ Click [here](https://docs.google.com/document/d/16ps7VZRZd3gsKrWACelI3DyU_dNB8ET
 
 Click [here](https://github.com/SharonLK/psagot-2020-algo/blob/master/PYCHARM_SHORTCUTS.md) for a list of PyCharm shortcuts and tips & tricks.
 
+Your objective is to implement the function `navigate(...)` in the file `algorithmics/navigator.py`. To check your solutions you can run the file `algorithmics/app.py`.
+
 ## Python (Anaconda) & PyCharm Installation
 
 By now you should have downloaded & set-up the algorithmic anaconda environment using the instructions in the following link:
@@ -17,7 +19,7 @@ If you haven't done already, now is the time. In addition, make sure you have Py
 Follow these instructions to clone the repo and set-up PyCharm correctly:
 
 1. Open `git bash` and `cd` to a working directory of you choice, the spicier the better
-2. Clone this repository to your local machine `git clone https://github.com/SharonLK/psagot-2020-reqs.git` (if it doesn't work for some reason, you can simply download the repo)
+2. Clone this repository to your local machine `git clone https://github.com/SharonLK/psagot-2020-algo.git` (if it doesn't work for some reason, you can simply download the repo)
 3. Open the cloned directory using PyCharm
 4. After the project has been opened in PyCharm, go to settings, `File -> Settings...` (or `CTRL ALT S`)
 5. In the opened window open the tab `Project -> Project Interpreter`
