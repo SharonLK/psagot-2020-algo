@@ -5,27 +5,20 @@
   ],
   "target": [
     10,
-    5
+    10
   ],
   "observation_posts": [
     {
       "center": [
-        4,
-        0
-      ],
-      "radius": 3
-    },
-    {
-      "center": [
-        7,
-        6
+        2,
+        4
       ],
       "radius": 2
     },
     {
       "center": [
-        10,
-        0
+        8,
+        6
       ],
       "radius": 2
     }

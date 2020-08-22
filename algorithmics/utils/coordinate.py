@@ -3,10 +3,50 @@ import math
 
 class Coordinate:
     def __init__(self, x: float, y: float) -> None:
+        """Create a new immutable coordinate
+
+        Note that this class is immutable, any function executed on this class will result in a new Coordinate instance.
+
+        Examples:
+        =========
+
+        >>> c1 = Coordinate(5, 5)
+        >>> c2 = Coordinate(10, 10)
+        >>> c1
+        Coordinate(x=5, y=5)
+
+        >>> c1.x, c1.y
+        (5, 5)
+
+        >>> c1.x = 10
+        Traceback (most recent call last):
+          ...
+        AttributeError: can't set attribute
+
+        >>> -c1
+        Coordinate(x=-5, y=-5)
+
+        >>> c1 + c2
+        Coordinate(x=15, y=15)
+
+        >>> c1.distance_to(c2)
+        7.0710678118654755
+
+        :param x: x value of the coordinate
+        :param y: y value of the coordinate
+        """
         super().__init__()
 
-        self.x = x
-        self.y = y
+        self._x = x
+        self._y = y
+
+    @property
+    def x(self) -> float:
+        return self._x
+
+    @property
+    def y(self) -> float:
+        return self._y
 
     def __eq__(self, o: object) -> bool:
         if not isinstance(o, Coordinate):
