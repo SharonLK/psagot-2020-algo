@@ -6,6 +6,8 @@ Click [here](https://github.com/SharonLK/psagot-2020-algo/blob/master/PYCHARM_SH
 
 Your objective is to implement the function `navigate(...)` in the file `algorithmics/navigator.py`. To check your solutions you can run the file `algorithmics/app.py`.
 
+To enter your submissions, [click here](http://algo-submission.eastus.cloudapp.azure.com:8324/).
+
 ## Python (Anaconda) & PyCharm Installation
 
 By now you should have downloaded & set-up the algorithmic anaconda environment using the instructions in the following link:
