@@ -8,7 +8,11 @@ from typing import Dict, List, Tuple
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
-import plotly.graph_objects as go
+
+try:
+    import plotly.graph_objects as go
+except:
+    from plotly import graph_objs as go
 
 from algorithmics.threats.asteroids_zone import AsteroidsZone
 from algorithmics.threats.observation_post import ObservationPost
