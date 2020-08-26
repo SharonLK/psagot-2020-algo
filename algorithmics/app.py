@@ -146,32 +146,34 @@ app = dash.Dash(__name__, assets_folder=pathlib.Path('..') / 'resources' / 'css'
 # A bit of HTML to make the dashboard look clean and nice
 app.layout = html.Div([
     html.H1('The Most Best Application Ever', style={'text-align': 'center', 'font-family': 'Courier New',
-                                                     'font-weight': 'bold', 'font-size': '30px'}),
-    dcc.RadioItems(id='scenario-radio-items',
-                   options=[{'label': f'Scenario #{_extract_scenario_number_from_path(filename)}',
-                             'value': filename}
-                            for filename in scenario_files],
-                   value=scenario_files[0],
-                   labelStyle={'display': 'inline-block', 'font-family': 'Courier New', 'font-weight': 'bold',
-                               'margin-bottom': '10px', 'color': '#ffffff', 'margin-right': '10px'}),
-    dcc.Graph(
-        id='graph',
-        config={'scrollZoom': True},
-        style={'height': '70vh', 'margin-bottom': '10px'}
-    ),
-    html.Button('Run Algorithm!', id='run-button', style={'color': 'white'}),
+                                                     'font-weight': 'bold', 'font-size': '30px',
+                                                     'padding-bottom': '10px', 'padding-top': '10px',
+                                                     'color': 'orange', 'background-color': '#222222'}),
     html.Div([
-        html.Div('Calculated path:',
-                 style={'font-family': 'Courier New', 'font-weight': 'bold', 'margin-top': '5px',
+        dcc.RadioItems(id='scenario-radio-items',
+                       options=[{'label': f'Scenario #{_extract_scenario_number_from_path(filename)}',
+                                 'value': filename}
+                                for filename in scenario_files],
+                       value=scenario_files[0],
+                       labelStyle={'display': 'inline-block', 'font-family': 'Courier New', 'font-weight': 'bold',
+                                   'margin-bottom': '10px', 'color': '#ffffff', 'margin-right': '10px'}),
+        dcc.Graph(
+            id='graph',
+            config={'scrollZoom': True},
+            style={'height': '70vh', 'margin-bottom': '10px'}
+        ),
+        html.Button('Run Algorithm!', id='run-button', style={'color': 'white', 'width': '100%', 'font-size': '16px'}),
+        html.Div('Calculated path (copy and submit in submission website):',
+                 style={'font-family': 'Courier New', 'font-size': '14px', 'font-weight': 'bold', 'margin-top': '5px',
                         'margin-bottom': '5px', 'color': '#ffffff'}),
         dcc.Input(id='calculated-path',
                   readOnly=True,
-                  style={'font-family': 'Courier New', 'font-weight': 'bold', 'background-color': 'black',
-                         'color': 'white', 'width': '100%'})
-    ]),
+                  style={'font-family': 'Courier New', 'font-size': '14px', 'font-weight': 'bold',
+                         'background-color': 'black', 'color': 'orange', 'width': '100%'})
+    ], style={'margin-left': '20px', 'margin-right': '20px'}),
 
     dcc.Store(id='store-path', data=[])
-], style={'margin-top': '20px', 'margin-left': '10px', 'margin-right': '10px'})
+], style={'margin': '0px'})
 
 
 @app.callback(dash.dependencies.Output('calculated-path', 'value'),
