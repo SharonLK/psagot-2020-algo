@@ -52,15 +52,17 @@ def _hex_to_rgb(hex_color: str) -> Tuple[int, int, int]:
     return int(hex_color[0:2], 16), int(hex_color[2:4], 16), int(hex_color[4:6], 16)
 
 
-def _generate_coordinate_scatter(coordinate: Coordinate, color: str = '#ff5500', text=None) -> go.Scatter:
+def _generate_coordinate_scatter(coordinate: Coordinate, color: str = '#ff5500', text=None,
+                                 hovertext=None) -> go.Scatter:
     """Converts the give coordinate into a displayable plotly scatter
 
     :param coordinate: coordinate to display
     :param color: color of the coordinate
     :return: plotly scatter graphics object containing the circle
     """
-    return go.Scatter(x=[coordinate.x], y=[coordinate.y], mode='markers',
-                      hoverinfo='skip' if text is None else 'text', text=text,
+    return go.Scatter(x=[coordinate.x], y=[coordinate.y], mode='markers+text',
+                      hoverinfo='skip' if hovertext is None else 'name', name=hovertext,
+                      text=text, textposition='top center',
                       marker=go.scatter.Marker(color=color, size=13))
 
 
@@ -148,7 +150,7 @@ app.layout = html.Div([
     html.H1('The Most Best Application Ever', style={'text-align': 'center', 'font-family': 'Courier New',
                                                      'font-weight': 'bold', 'font-size': '30px',
                                                      'padding-bottom': '10px', 'padding-top': '10px',
-                                                     'color': 'orange', 'background-color': '#222222'}),
+                                                     'color': '#BBBBBB', 'background-color': '#2D2D2D'}),
     html.Div([
         dcc.RadioItems(id='scenario-radio-items',
                        options=[{'label': f'Scenario #{_extract_scenario_number_from_path(filename)}',
@@ -217,9 +219,11 @@ def update_graph(scenario_path: str, path: List[Tuple[float, float]]) -> go.Figu
                            for i, radar in enumerate(radars)] +
                           [_generate_path_scatter(path, color='#cccccc')] +
                           [_generate_coordinate_scatter(source, color='#bfff80',
-                                                        text=f'Source ({source.x}, {source.y})'),
+                                                        text='source',
+                                                        hovertext=f'({source.x}, {source.y})'),
                            _generate_coordinate_scatter(target, color='#ff704d',
-                                                        text=f'Target ({target.x}, {target.y})')],
+                                                        text='target',
+                                                        hovertext=f'({target.x}, {target.y})')],
                      layout=go.Layout(dragmode='pan',
                                       yaxis={'scaleanchor': 'x'},
                                       showlegend=False,
