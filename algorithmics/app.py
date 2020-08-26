@@ -139,7 +139,7 @@ def _extract_scenario_number_from_path(path: str) -> int:
 
 # Retrieve all available scenarios
 scenario_files = glob.glob('../resources/scenarios/scenario_*.json')
-scenario_files = sorted(scenario_files, key=lambda name: str(_extract_scenario_number_from_path(name)))
+scenario_files = sorted(scenario_files, key=lambda name: _extract_scenario_number_from_path(name))
 
 app = dash.Dash(__name__, assets_folder=pathlib.Path('..') / 'resources' / 'css')
 
