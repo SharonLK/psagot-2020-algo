@@ -11,7 +11,7 @@ import dash_html_components as html
 
 try:
     import plotly.graph_objects as go
-except:
+except ModuleNotFoundError as _:  # Happens for different versions of plotly
     from plotly import graph_objs as go
 
 from algorithmics.threats.asteroids_zone import AsteroidsZone
